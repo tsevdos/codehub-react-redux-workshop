@@ -1,10 +1,11 @@
 export { default as Example04 } from "./04/index";
 export { default as Exercise1 } from "./exercise1/index";
-export { default as Solution1 } from "./solution1/index";
+// export { default as Solution1 } from "./solution1/index";
 export { default as Example05 } from "./05/index";
 export { default as Exercise2 } from "./exercise2/index";
-export { default as Solution2 } from "./solution2/index";
+// export { default as Solution2 } from "./solution2/index";
 export { default as Example06 } from "./06/index";
 export { default as Exercise3 } from "./exercise3/index";
-export { default as Solution3 } from "./solution3/index";
+// export { default as Solution3 } from "./solution3/index";
 export { default as Example07 } from "./07/index";
+export { default as Example08 } from "./08/index";

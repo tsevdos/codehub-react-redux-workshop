@@ -1,17 +1,19 @@
+import "babel-polyfill";
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, NavLink } from "react-router-dom";
 import {
   Example04,
   Exercise1,
-  Solution1,
+  // Solution1,
   Example05,
   Exercise2,
-  Solution2,
+  // Solution2,
   Example06,
   Exercise3,
-  Solution3,
+  // Solution3,
   Example07,
+  Example08,
 } from "./examples/index";
 // CSS
 import "./app.css";
@@ -67,20 +69,24 @@ ReactDOM.render(
               <NavLink to="/07" className="nav-link">
                 07
               </NavLink>
+              <NavLink to="/08" className="nav-link">
+                08
+              </NavLink>
             </nav>
           </aside>
         </div>
         <div className="col-9">
           <Route exact path="/04" component={Example04} />
           <Route exact path="/exercise1" component={Exercise1} />
-          <Route exact path="/solution1" component={Solution1} />
+          {/* <Route exact path="/solution1" component={Solution1} /> */}
           <Route exact path="/05" component={Example05} />
           <Route exact path="/exercise2" component={Exercise2} />
-          <Route exact path="/solution2" component={Solution2} />
+          {/* <Route exact path="/solution2" component={Solution2} /> */}
           <Route exact path="/06" component={Example06} />
           <Route exact path="/exercise3" component={Exercise3} />
-          <Route exact path="/solution3" component={Solution3} />
+          {/* <Route exact path="/solution3" component={Solution3} /> */}
           <Route exact path="/07" component={Example07} />
+          <Route exact path="/08" component={Example08} />
         </div>
       </div>
     </div>
