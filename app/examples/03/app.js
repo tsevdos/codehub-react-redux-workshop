@@ -2,11 +2,7 @@ function TodoItem({ title, done, index, toggleDone }) {
   return (
     <li>
       <label>
-        <input
-          type="checkbox"
-          checked={done}
-          onChange={() => toggleDone(index)}
-        />
+        <input type="checkbox" checked={done} onChange={() => toggleDone(index)} />
         &nbsp;
         {done ? <strike>{title}</strike> : <span>{title}</span>}
       </label>
@@ -20,35 +16,35 @@ class TodoApp extends React.Component {
     todos: [
       {
         title: "Learn React",
-        done: false
+        done: false,
       },
       {
         title: "Go to Code.Hub",
-        done: true
+        done: true,
       },
       {
         title: "Go out for a drink",
-        done: false
-      }
-    ]
+        done: false,
+      },
+    ],
   };
 
-  toggleDone = index => {
+  toggleDone = (index) => {
     const newTodos = [...this.state.todos];
     newTodos[index].done = !newTodos[index].done;
 
     this.setState({ todos: newTodos });
   };
 
-  updateInput = event => {
+  updateInput = (event) => {
     this.setState({ toDoInput: event.target.value });
   };
 
-  addToDo = e => {
+  addToDo = (e) => {
     e.preventDefault();
     const newToDo = {
       title: this.state.toDoInput,
-      done: false
+      done: false,
     };
     const newTodos = [...this.state.todos, newToDo];
 
@@ -63,17 +59,11 @@ class TodoApp extends React.Component {
         <h2>My ToDos</h2>
         <ul>
           {todos.map((todo, index) => (
-            <TodoItem
-              key={todo.title}
-              {...todo}
-              index={index}
-              toggleDone={this.toggleDone}
-            />
+            <TodoItem key={todo.title} {...todo} index={index} toggleDone={this.toggleDone} />
           ))}
         </ul>
         <form onSubmit={this.addToDo}>
-          Add ToDo:{" "}
-          <input value={toDoInput} onChange={this.updateInput} type="text" />
+          Add ToDo: <input value={toDoInput} onChange={this.updateInput} type="text" />
           <button type="submit">Add ToDo</button>
         </form>
       </div>

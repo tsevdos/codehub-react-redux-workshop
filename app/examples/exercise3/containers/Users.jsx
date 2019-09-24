@@ -1,33 +1,82 @@
 import React, { Component } from "react";
+import { changeFilter } from "../actions/filterActions";
+import { ALL, IT, MARKETING, HR, FINANCE } from "../constants/filterTypes";
 import { connect } from "react-redux";
 
 class TodoApp extends Component {
   render() {
-    const { users } = this.props;
+    const { users, filter, changeFilter } = this.props;
 
     return (
-      <div className="container">
-        <h2>Users</h2>
+      <div className="employees-list">
+        <div className="btn-group btn-group-sm">
+          <button
+            onClick={() => changeFilter(ALL)}
+            className={`btn ${filter === ALL ? "btn-primary" : "btn-light"}`}
+          >
+            ALL
+          </button>
+          <button
+            onClick={() => changeFilter(IT)}
+            className={`btn ${filter === IT ? "btn-primary" : "btn-light"}`}
+          >
+            IT
+          </button>
+          <button
+            onClick={() => changeFilter(MARKETING)}
+            className={`btn ${filter === MARKETING ? "btn-primary" : "btn-light"}`}
+          >
+            MARKETING
+          </button>
+          <button
+            onClick={() => changeFilter(HR)}
+            className={`btn ${filter === HR ? "btn-primary" : "btn-light"}`}
+          >
+            HR
+          </button>
+          <button
+            onClick={() => changeFilter(FINANCE)}
+            className={`btn ${filter === FINANCE ? "btn-primary" : "btn-light"}`}
+          >
+            FINANCE
+          </button>
+        </div>
+        <br />
         <hr />
-        {users.map(({ name, surname, male }, i) => {
-          const title = male ? "Mr." : "Mrs.";
-          const fullName = `${title} ${name} ${surname}`;
-
-          return (
-            <div key={i} className="card m-b">
-              <div className="card-body">
-                <h5>Hello {fullName}</h5>
+        <div>
+          {users.length &&
+            users.map(({ id, firstName, lastName, email, department, picture }) => (
+              <div key={id} className="card testimonial-card m-b">
+                <div className="card-up info-color"></div>
+                <div className="avatar mx-auto white m-t">
+                  <img src={picture} className="rounded-circle img-fluid" />
+                </div>
+                <div className="card-body">
+                  <h4 className="font-weight-bold mb-4 text-center">
+                    {firstName} {lastName}
+                  </h4>
+                  <hr />
+                  <p className="dark-grey-text mt-4">Email: {email}</p>
+                  <p className="dark-grey-text mt-4">Department: {department}</p>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            ))}
+        </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  users: state,
+const mapStateToProps = ({ users, filter }) => ({
+  users,
+  filter,
 });
 
-export default connect(mapStateToProps)(TodoApp);
+const mapDispatchToProps = {
+  changeFilter,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoApp);

@@ -1,21 +1,7 @@
 import { createStore } from "redux";
+import rootReducer from "../reducers/index";
 
-const initialState = [
-  {
-    name: "John",
-    surname: "Tsevdos",
-    male: true,
-    isOlympiakos: true,
-  },
-  {
-    name: "Maria",
-    surname: "PapaYolo",
-    male: false,
-  },
-];
-
-const rootReducer = (state) => state;
-
+const initialState = {};
 const store = createStore(
   rootReducer,
   initialState,

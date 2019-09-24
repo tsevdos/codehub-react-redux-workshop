@@ -19,9 +19,9 @@ export const getFilteredTodos = createSelector(
   [getTodos, getFilter],
   (todos, filter) => {
     if (filter === PENDING) {
-      return todos.filter((todo) => todo.done === false);
+      return todos.filter((todo) => !todo.done);
     } else if (filter === DONE) {
-      return todos.filter((todo) => todo.done === true);
+      return todos.filter((todo) => todo.done);
     }
 
     return todos;
